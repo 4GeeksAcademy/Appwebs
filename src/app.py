@@ -1,5 +1,4 @@
 from flask import Flask, request, render_template
-from pickle import load
 import os   
 import joblib
 app = Flask(__name__)
