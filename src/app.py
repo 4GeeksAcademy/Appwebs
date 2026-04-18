@@ -1,8 +1,14 @@
 from flask import Flask, request, render_template
 from pickle import load
+import os   
 
 app = Flask(__name__)
-model = load(open("/workspaces/Appwebs/models/salary_predictor_model.sav", "rb"))
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(BASE_DIR, "models", "salary_predictor_model.sav")
+
+model = joblib.load(model_path)
+#model = load(open("/workspaces/Appwebs/models/salary_predictor_model.sav", "rb"))
 
 
 @app.route("/", methods = ["GET", "POST"])
